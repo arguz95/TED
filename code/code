@@ -55,3 +55,26 @@ def save_fig(fig_id, tight_layout=True, fig_extension="png", resolution=300):
 import warnings
 warnings.filterwarnings(action="ignore", message="^internal gelsd")
 
+# Get the data
+
+### About the dataset
+
+### XXX
+
+import pandas as pd
+import requests
+import io
+    
+# Downloading the csv file from my GitHub account
+url = "https://raw.githubusercontent.com/McGill-MMA-EnterpriseAnalytics/TED/main/data/ted_main.csv"
+
+download = requests.get(url).content
+
+# Reading the downloaded content and turning it into a pandas dataframe
+# We will use "churn" instead of "df" for replication purposes
+df = pd.read_csv(io.StringIO(download.decode('utf-8')))
+
+# Printing out the first 5 rows of the dataframe
+df.head()
+
+df.info()
